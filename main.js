@@ -88,4 +88,30 @@ const ducks = [
     }
 ]
 
-console.log(ducks);
+const printToDom = (divId, textToPrint) => {
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = textToPrint;
+};
+
+const duckCards = (quackers) =>{
+    let domString = '';
+    for (let i = 0; i < quackers.length; i++) {
+    domString += '<div class= "col-md-6 col-lg-4">';    
+    domString += '<div class="card">';
+    domString += `<img src="${quackers[i].imgUrl}" class="cardImg" alt="...">`;
+    domString += '<div class="card-body">';
+    domString += `<h5 class="name">${quackers[i].name}</h5>`;
+    domString += `<p class="diet">${quackers[i].diet}</p>`;
+    domString += `<p class="social">${quackers[i].socialStatus}</p>`;
+    domString += '  </div>';
+    domString += '</div>';
+    domString += '</div>';
+    };
+    printToDom('duckies', domString);
+};
+
+const init = () => {
+    duckCards(ducks);
+};
+
+init();
