@@ -1,8 +1,8 @@
 const ducks = [
     {
         isRubber: true,
-        color: 'blue',
-        gender: 'female',
+        color: 'Blue',
+        gender: 'Female',
         isMigrator: false,
         socialStatus: 'ready to mingle',
         diet: 'none',
@@ -13,8 +13,8 @@ const ducks = [
     },
     {
         isRubber: true,
-        color: 'yellow',
-        gender: 'female',
+        color: 'Yellow',
+        gender: 'Female',
         isMigrator: false,
         socialStatus: 'ready to mingle',
         diet: 'none',
@@ -25,8 +25,8 @@ const ducks = [
     },
     {
         isRubber: false,
-        color: 'green',
-        gender: 'male',
+        color: 'Green',
+        gender: 'Male',
         isMigrator: true,
         socialStatus: 'ready to mingle',
         diet: 'vegan',
@@ -36,8 +36,8 @@ const ducks = [
     },
     {
         isRubber: false,
-        color: 'green',
-        gender: 'male',
+        color: 'Green',
+        gender: 'Male',
         isMigrator: true,
         socialStatus: 'ready to mingle',
         diet: 'vegan',
@@ -47,8 +47,8 @@ const ducks = [
     },
     {
         isRubber: false,
-        color: 'brown',
-        gender: 'female',
+        color: 'Brown',
+        gender: 'Female',
         isMigrator: true,
         socialStatus: 'looking for partner',
         diet: 'vegan',
@@ -58,18 +58,18 @@ const ducks = [
     },
     {
         isRubber: true,
-        color: 'orange',
-        gender: 'male',
+        color: 'Orange',
+        gender: 'Male',
         isMigrator: false,
         socialStatus: 'ready to mingle',
         diet: 'none',
         name: 'Gudao',
-        imgUrl: 'https://www.allaboutbirds.org/guide/assets/photo/60021801-480px.jpg'
+        imgUrl: 'https://cdn11.bigcommerce.com/s-nf2x4/images/stencil/1280x1280/products/502/10245/Orange-Rubber-Duck-Ad-Line-3__60520.1569183877.jpg?c=2&imbypass=on'
     },
     {
         isRubber: true,
-        color: 'blue',
-        gender: 'male',
+        color: 'Blue',
+        gender: 'Male',
         isMigrator: false,
         socialStatus: 'loner',
         diet: 'instant food',
@@ -78,8 +78,8 @@ const ducks = [
     },
     {
         isRubber: true,
-        color: 'yellow',
-        gender: 'male',
+        color: 'Yellow',
+        gender: 'Male',
         isMigrator: false,
         socialStatus: 'party animal',
         diet: 'luxury meals',
@@ -96,7 +96,7 @@ const printToDom = (divId, textToPrint) => {
 const duckCards = (quackers) =>{
     let domString = '';
     for (let i = 0; i < quackers.length; i++) {
-    domString += '<div class= "col-md-6 col-lg-4">';    
+    domString += '<div class= "col-md-6 col-lg-4 card-separation">';    
     domString += '<div class="card">';
     domString += `<img src="${quackers[i].imgUrl}" class="cardImg" alt="...">`;
     domString += '<div class="card-body">';
@@ -115,3 +115,46 @@ const init = () => {
 };
 
 init();
+
+const choseColor = (e) => {
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for(let i = 0; i < ducks.length; i++){
+        if(ducks[i].color === buttonId){
+            selectedDucks.push(ducks[i]);
+        }
+    }
+    duckCards(selectedDucks);
+};
+
+const choseGender = (e) => {
+    const buttonId = e.target.id;
+    const selectedDuckies = [];
+    for(let i = 0; i < ducks.length; i++){
+        if(ducks[i].gender === buttonId){
+            selectedDuckies.push(ducks[i]);
+        }
+    }
+    duckCards(selectedDuckies);
+};
+
+const choseRubber = () => {
+    const selectedRubber = [];
+    for(let i = 0; i < ducks.length; i++){
+        if(ducks[i].isRubber){
+            selectedRubber.push(ducks[i]);
+        }
+    }
+    duckCards(selectedRubber);
+};
+
+const events = () => {
+    document.getElementById('Blue').addEventListener('click', choseColor);
+    document.getElementById('Yellow').addEventListener('click', choseColor);
+    document.getElementById('Green').addEventListener('click', choseColor);
+    document.getElementById('Male').addEventListener('click', choseGender);
+    document.getElementById('Female').addEventListener('click', choseGender);
+    document.getElementById('Rubber').addEventListener('click', choseRubber);
+};
+
+events();
